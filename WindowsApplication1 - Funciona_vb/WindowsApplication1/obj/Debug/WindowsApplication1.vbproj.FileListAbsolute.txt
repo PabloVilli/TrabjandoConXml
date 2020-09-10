@@ -1,0 +1,34 @@
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.pdb
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.xml
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.Form1.resources
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.Resources.resources
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.vbproj.GenerateResource.Cache
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.exe
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.xml
+c:\users\zbook 17 g2\documents\visual studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.pdb
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.pdb
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.xml
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.vbproj.GenerateResource.Cache
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.exe
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.xml
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.pdb
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.exe
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.xml
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.pdb
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\bin\Debug\WindowsApplication1.exe
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\bin\Debug\WindowsApplication1.pdb
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\bin\Debug\WindowsApplication1.xml
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\_PracticasXml\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.vbproj.GenerateResource.Cache
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1 - Funciona_vb\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.exe
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.xml
+C:\Users\dsa5\Documents\Visual Studio 2013\Projects\WindowsApplication1 - Funciona_vb\WindowsApplication1\obj\Debug\WindowsApplication1.pdb

@@ -1,0 +1,188 @@
+
+            'row = table.NewRow
+
+            '_cfdiUsoCFDI = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@UsoCFDI", VarManager).InnerText
+            'row("cfdiUsoCFDI") = _cfdiUsoCFDI
+
+            '_ResidenciaFiscal = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("ResidenciaFiscal") = _ResidenciaFiscal
+
+            '_Email = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("Email") = _Email
+
+            '_nombre = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@Nombre", VarManager).InnerText
+            'row("nombre") = _nombre
+
+            '_IdExterno = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("IdExterno") = _IdExterno
+
+            '_RFC = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@Rfc", VarManager).InnerText
+            'row("RFC") = _RFC
+
+            '_calle = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("calle") = _calle
+
+            '_noExterior = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("noExterior") = _noExterior
+
+            '_noInterior = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("noInterior") = _noInterior
+
+            '_colonia = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("colonia") = _colonia
+
+            '_localidad = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("localidad") = _localidad
+
+            '_municipio = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("municipio") = _municipio
+
+            '_estado = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("estado") = _estado
+
+            '_codigoPostal = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("codigoPostal") = _codigoPostal
+
+            '_pais = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("pais") = _pais
+
+            '_FechaReferencia = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Fecha", VarManager).InnerText
+            'row("FechaReferencia") = _FechaReferencia
+
+            '_cfdiFormaPago = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@FormaPago", VarManager).InnerText
+            'row("fdiFormaPago") = _cfdiFormaPago
+
+            '_cfdiMetodoPago = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@MetodoPago", VarManager).InnerText
+            'row("cfdiMetodoPago") = _cfdiMetodoPago
+
+            '_TipoCambio = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@TipoCambio", VarManager).InnerText
+            'row("TipoCambio") = _TipoCambio
+
+            '_Moneda = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Moneda", VarManager).InnerText
+            'row("Moneda") = _Moneda
+
+            '_SubTotal = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@SubTotal", VarManager).InnerText
+            'row("SubTotal") = _SubTotal
+
+            '_Total = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Total", VarManager).InnerText
+            'row("Total") = _Total
+
+            '_Observaciones = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("Observaciones") = _Observaciones
+
+            '_condicionPago = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("condicionPago") = _condicionPago
+
+            '_LugarExpedicion = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@LugarExpedicion", VarManager).InnerText
+            'row("LugarExpedicion") = _LugarExpedicion
+
+            '_FolioReferencia = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("FolioReferencia") = _FolioReferencia
+
+            '_Codigo = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("Codigo") = _Codigo
+
+            '_DocPago = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("DocPago") = _DocPago
+
+            '_IvaImporte = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+            'row("IvaImporte") = _IvaImporte
+
+            'VarConceptos = DocumentoXML.SelectNodes("/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto", VarManager)
+            'VarImpuestos = DocumentoXML.SelectNodes("/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto/cfdi:Impuestos/cfdi:Traslados/cfdi:Traslado", VarManager)
+
+            'For Each node1 In VarImpuestos
+
+            '    row1 = table.NewRow
+
+            '    _cfdiBase = node1.attributes("Base").value
+            '    row1("cfdiBase") = _cfdiBase
+
+            '    _cfdiImpuesto = node1.attributes("Impuesto").value
+            '    row1("cfdiImpuesto") = _cfdiImpuesto
+
+            '    _cfdiTipoFactor = node1.attributes("TipoFactor").value
+            '    row1("cfdiTipoFactor") = _cfdiTipoFactor
+
+            '    _cfdiTasaOCuota = node1.attributes("TasaOCuota").value
+            '    row1("cfdiTasaOCuota") = _cfdiTasaOCuota
+
+            '    _cfdiImporte = node1.attributes("Importe").value
+            '    row1("cfdiImporte") = _cfdiImporte
+
+
+            '    For Each node In VarConceptos
+
+            '        'row2 = table.NewRow
+
+            '        row2 = table.NewRow
+
+            '        _cfdiClaveProdServ = node.attributes("ClaveProdServ").value
+            '        row2("cfdiClaveProdServ") = _cfdiClaveProdServ
+
+            '        _Cantidad = node.attributes("Cantidad").value
+            '        row2("Cantidad") = _Cantidad
+
+            '        _cfdiClaveUnidad = node.attributes("ClaveUnidad").value
+            '        row2("cfdiClaveUnidad") = _cfdiClaveUnidad
+
+            '        _Concepto = node.attributes("Descripcion").value
+            '        row2("Concepto") = _Concepto
+
+            '        _PUnitario = node.attributes("ValorUnitario").value
+            '        row2("PUnitario") = _PUnitario
+
+            '        _Importe = node.attributes("Importe").value
+            '        row2("Importe") = _Importe
+
+            '        _Renglon = node.attributes("Renglon").value
+            '        row2("Renglon") = _Renglon
+
+
+
+            '    Next
+            '    table.Rows.Add(row2)
+            '    'table.Rows.Add(row1)
+
+            'Next
+
+
+
+
+            '    'row2 = table.NewRow
+
+            '    _cfdiBase = node.attributes("Base").value
+            '    row1("cfdiBase") = _cfdiBase
+
+            '    _cfdiImpuesto = node.attributes("Impuesto").value
+            '    row1("cfdiImpuesto") = _cfdiImpuesto
+
+            '    _cfdiTipoFactor = node.attributes("TipoFactor").value
+            '    row1("cfdiTipoFactor") = _cfdiTipoFactor
+
+            '    _cfdiTasaOCuota = node.attributes("TasaOCuota").value
+            '    row1("cfdiTasaOCuota") = _cfdiTasaOCuota
+
+            '    _cfdiImporte = node.attributes("Importe").value
+            '    row1("cfdiImporte") = _cfdiImporte
+
+            '    'table.Rows.Add(row2)
+
+
+
+
+
+
+
+
+
+
+            'VarImpuestos = DocumentoXML.SelectNodes("/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto/cfdi:Impuestos/cfdi:Traslados/cfdi:Traslado ", VarManager)
+
+            'For Each book As XmlNode In VarImpuestos
+
+            '    book.LastChild.Normalize()
+
+
+
+            'Next

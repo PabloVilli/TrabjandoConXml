@@ -1,0 +1,439 @@
+    Public Sub Importar(ByVal aa As String)
+
+        Dim rute As String
+
+        Dim Version_xml As String
+
+        Dim _cfdiUsoCFDI As String
+        Dim _ResidenciaFiscal As String
+        Dim _Email As String
+        Dim _nombre As String
+        Dim _IdExterno As String
+        Dim _RFC As String
+        Dim _calle As String
+        Dim _noExterior As String
+        Dim _noInterior As String
+        Dim _colonia As String
+        Dim _localidad As String
+        Dim _municipio As String
+        Dim _estado As String
+        Dim _codigoPostal As String
+        Dim _pais As String
+        Dim _FechaReferencia As String
+        Dim _cfdiFormaPago As String
+        Dim _cfdiMetodoPago As String
+        Dim _TipoCambio As String
+        Dim _Moneda As String
+        Dim _SubTotal As String
+        Dim _Total As String
+        Dim _Observaciones As String
+        Dim _condicionPago As String
+        Dim _LugarExpedicion As String
+        Dim _FolioReferencia As String
+        Dim _Codigo As String
+        Dim _DocPago As String
+        Dim _IvaImporte As String
+        Dim _PUnitario As String
+        Dim _Importe As String
+        Dim _cfdiClaveUnidad As String
+        Dim _cfdiClaveProdServ As String
+        Dim _Cantidad As String
+        Dim _Concepto As String
+        Dim _Renglon As String
+        Dim _cfdiTasaOCuota As String
+        Dim _cfdiTipoFactor As String
+        Dim _cfdiImporte As String
+        Dim _cfdiBase As String
+        Dim _cfdiImpuesto As String
+        Dim VarConceptos, VarImpuestos As XmlNodeList
+        On Error Resume Next
+        Dim DocumentoXML As XmlDocument = New XmlDocument()
+        Dim VarManager As XmlNamespaceManager = New XmlNamespaceManager(DocumentoXML.NameTable)
+
+        rute = rutaFinal + aa
+
+        DocumentoXML.Load(rute)  'Aqui puedes definir la ruta del archivo mediante un OpenFileDialog o  algun otro metodo para especificar la ubicacion del XML
+        VarManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
+        VarManager.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
+        VarManager.AddNamespace("implocal", "http://www.sat.gob.mx/implocal")
+
+        Version_xml = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Version", VarManager).InnerText
+
+        If Version_xml = "3.3" Then
+
+            Dim nsCFDi As XNamespace = "http://www.sat.gob.mx/cfd/3" 'para que pueda identificar el prefijo CFDI
+            Dim archivoXML As XDocument = XDocument.Load(rute) 'selecciona y abre la factura electrónica xml
+            Dim importe As Integer = 0 'contador para saber cuantos conceptos tiene la factura
+
+            For Each lconcepto As XElement In archivoXML.Descendants(nsCFDi + "Comprobante").Elements(nsCFDi + "Conceptos").Elements() 'ciclo que recorre todos los conceptos de la factura
+
+                row = table.NewRow
+
+                _cfdiUsoCFDI = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@UsoCFDI", VarManager).InnerText
+                row("cfdiUsoCFDI") = _cfdiUsoCFDI
+
+                _ResidenciaFiscal = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("ResidenciaFiscal") = _ResidenciaFiscal
+
+                _Email = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("Email") = _Email
+
+                _nombre = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@Nombre", VarManager).InnerText
+                row("nombre") = _nombre
+
+                _IdExterno = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("IdExterno") = _IdExterno
+
+                _RFC = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@Rfc", VarManager).InnerText
+                row("RFC") = _RFC
+
+                _calle = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("calle") = _calle
+
+                _noExterior = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("noExterior") = _noExterior
+
+                _noInterior = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("noInterior") = _noInterior
+
+                _colonia = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("colonia") = _colonia
+
+                _localidad = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("localidad") = _localidad
+
+                _municipio = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("municipio") = _municipio
+
+                _estado = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("estado") = _estado
+
+                _codigoPostal = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("codigoPostal") = _codigoPostal
+
+                _pais = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("pais") = _pais
+
+                _FechaReferencia = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Fecha", VarManager).InnerText
+                row("FechaReferencia") = _FechaReferencia
+
+                _cfdiFormaPago = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@FormaPago", VarManager).InnerText
+                row("fdiFormaPago") = _cfdiFormaPago
+
+                _cfdiMetodoPago = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@MetodoPago", VarManager).InnerText
+                row("cfdiMetodoPago") = _cfdiMetodoPago
+
+                _TipoCambio = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@TipoCambio", VarManager).InnerText
+                row("TipoCambio") = _TipoCambio
+
+                _Moneda = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Moneda", VarManager).InnerText
+                row("Moneda") = _Moneda
+
+                _SubTotal = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@SubTotal", VarManager).InnerText
+                row("SubTotal") = _SubTotal
+
+                _Total = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Total", VarManager).InnerText
+                row("Total") = _Total
+
+                _Observaciones = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("Observaciones") = _Observaciones
+
+                _condicionPago = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("condicionPago") = _condicionPago
+
+                _LugarExpedicion = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@LugarExpedicion", VarManager).InnerText
+                row("LugarExpedicion") = _LugarExpedicion
+
+                _FolioReferencia = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("FolioReferencia") = _FolioReferencia
+
+                _Codigo = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("Codigo") = _Codigo
+
+                _DocPago = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("DocPago") = _DocPago
+
+                _IvaImporte = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("IvaImporte") = _IvaImporte
+
+                '-----------------------------------------------------------------------------------------------------------------------------------'
+                _cfdiClaveProdServ = lconcepto.Attribute("ClaveProdServ").Value
+                row("cfdiClaveProdServ") = _cfdiClaveProdServ
+
+                _Cantidad = lconcepto.Attribute("Cantidad")
+                row("Cantidad") = _Cantidad
+
+                _cfdiClaveUnidad = lconcepto.Attribute("ClaveUnidad")
+                row("cfdiClaveUnidad") = _cfdiClaveUnidad
+
+                _Concepto = lconcepto.Attribute("Descripcion").Value
+                row("Concepto") = _Concepto
+
+                _PUnitario = lconcepto.Attribute("ValorUnitario").Value
+                row("PUnitario") = _PUnitario
+
+                _Importe = lconcepto.Attribute("Importe")
+                row("Importe") = _Importe
+                ax = Double.Parse(_Importe)
+
+                importe = importe + 1
+
+                If lconcepto.HasAttributes = True Then
+
+                    For Each lImpuestos As XElement In archivoXML.Descendants(nsCFDi + "Comprobante").Elements(nsCFDi + "Conceptos").Elements(nsCFDi + "Concepto").Elements(nsCFDi + "Impuestos").Elements(nsCFDi + "Traslados").Elements(nsCFDi + "Traslado")
+
+                        _cfdiBase = lImpuestos.Attribute("Base").Value
+
+                        x2 = Double.Parse(_cfdiBase)
+
+                        If ax = x2 Then
+
+                            _cfdiBase = lImpuestos.Attribute("Base").Value
+                            row("cfdiBase") = _cfdiBase
+
+                            _cfdiImpuesto = lImpuestos.Attribute("Impuesto").Value
+                            row("cfdiImpuesto") = _cfdiImpuesto
+
+                            _cfdiTipoFactor = lImpuestos.Attribute("TipoFactor").Value
+                            row("cfdiTipoFactor") = _cfdiTipoFactor
+
+                            _cfdiTasaOCuota = lImpuestos.Attribute("TasaOCuota").Value
+                            row("cfdiTasaOCuota") = _cfdiTasaOCuota
+
+                            _cfdiImporte = lImpuestos.Attribute("Importe").Value
+                            row("cfdiImporte") = _cfdiImporte
+
+                        End If
+                    Next
+                    table.Rows.Add(row)
+                End If
+                table.Rows.Add(row)
+            Next
+            lb1.Text = (importe & "  conceptos ")
+        Else
+            MsgBox("Archivo XML no es una factura version 3.3")
+        End If
+
+        dgv1.DataSource = table
+
+    End Sub
+
+    Public Sub Importar(ByVal aa As String)
+
+        Dim rute As String
+
+        Dim Version_xml As String
+
+        Dim _cfdiUsoCFDI As String
+        Dim _ResidenciaFiscal As String
+        Dim _Email As String
+        Dim _nombre As String
+        Dim _IdExterno As String
+        Dim _RFC As String
+        Dim _calle As String
+        Dim _noExterior As String
+        Dim _noInterior As String
+        Dim _colonia As String
+        Dim _localidad As String
+        Dim _municipio As String
+        Dim _estado As String
+        Dim _codigoPostal As String
+        Dim _pais As String
+        Dim _FechaReferencia As String
+        Dim _cfdiFormaPago As String
+        Dim _cfdiMetodoPago As String
+        Dim _TipoCambio As String
+        Dim _Moneda As String
+        Dim _SubTotal As String
+        Dim _Total As String
+        Dim _Observaciones As String
+        Dim _condicionPago As String
+        Dim _LugarExpedicion As String
+        Dim _FolioReferencia As String
+        Dim _Codigo As String
+        Dim _DocPago As String
+        Dim _IvaImporte As String
+        Dim _PUnitario As String
+        Dim _Importe As String
+        Dim _cfdiClaveUnidad As String
+        Dim _cfdiClaveProdServ As String
+        Dim _Cantidad As String
+        Dim _Concepto As String
+        Dim _Renglon As String
+        Dim _cfdiTasaOCuota As String
+        Dim _cfdiTipoFactor As String
+        Dim _cfdiImporte As String
+        Dim _cfdiBase As String
+        Dim _cfdiImpuesto As String
+        Dim VarConceptos, VarImpuestos As XmlNodeList
+        On Error Resume Next
+        Dim DocumentoXML As XmlDocument = New XmlDocument()
+        Dim VarManager As XmlNamespaceManager = New XmlNamespaceManager(DocumentoXML.NameTable)
+
+        rute = rutaFinal + aa
+
+        DocumentoXML.Load(rute)  'Aqui puedes definir la ruta del archivo mediante un OpenFileDialog o  algun otro metodo para especificar la ubicacion del XML
+        VarManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
+        VarManager.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
+        VarManager.AddNamespace("implocal", "http://www.sat.gob.mx/implocal")
+
+        Version_xml = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Version", VarManager).InnerText
+
+        If Version_xml = "3.3" Then
+
+            Dim nsCFDi As XNamespace = "http://www.sat.gob.mx/cfd/3" 'para que pueda identificar el prefijo CFDI
+            Dim archivoXML As XDocument = XDocument.Load(rute) 'selecciona y abre la factura electrónica xml
+            Dim importe As Integer = 0 'contador para saber cuantos conceptos tiene la factura
+
+            For Each lconcepto As XElement In archivoXML.Descendants(nsCFDi + "Comprobante").Elements(nsCFDi + "Conceptos").Elements() 'ciclo que recorre todos los conceptos de la factura
+
+                row = table.NewRow
+
+                _cfdiUsoCFDI = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@UsoCFDI", VarManager).InnerText
+                row("cfdiUsoCFDI") = _cfdiUsoCFDI
+
+                _ResidenciaFiscal = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("ResidenciaFiscal") = _ResidenciaFiscal
+
+                _Email = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("Email") = _Email
+
+                _nombre = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@Nombre", VarManager).InnerText
+                row("nombre") = _nombre
+
+                _IdExterno = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("IdExterno") = _IdExterno
+
+                _RFC = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/cfdi:Receptor/@Rfc", VarManager).InnerText
+                row("RFC") = _RFC
+
+                _calle = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("calle") = _calle
+
+                _noExterior = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("noExterior") = _noExterior
+
+                _noInterior = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("noInterior") = _noInterior
+
+                _colonia = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("colonia") = _colonia
+
+                _localidad = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("localidad") = _localidad
+
+                _municipio = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("municipio") = _municipio
+
+                _estado = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("estado") = _estado
+
+                _codigoPostal = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("codigoPostal") = _codigoPostal
+
+                _pais = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("pais") = _pais
+
+                _FechaReferencia = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Fecha", VarManager).InnerText
+                row("FechaReferencia") = _FechaReferencia
+
+                _cfdiFormaPago = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@FormaPago", VarManager).InnerText
+                row("fdiFormaPago") = _cfdiFormaPago
+
+                _cfdiMetodoPago = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@MetodoPago", VarManager).InnerText
+                row("cfdiMetodoPago") = _cfdiMetodoPago
+
+                _TipoCambio = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@TipoCambio", VarManager).InnerText
+                row("TipoCambio") = _TipoCambio
+
+                _Moneda = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Moneda", VarManager).InnerText
+                row("Moneda") = _Moneda
+
+                _SubTotal = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@SubTotal", VarManager).InnerText
+                row("SubTotal") = _SubTotal
+
+                _Total = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@Total", VarManager).InnerText
+                row("Total") = _Total
+
+                _Observaciones = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("Observaciones") = _Observaciones
+
+                _condicionPago = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("condicionPago") = _condicionPago
+
+                _LugarExpedicion = DocumentoXML.SelectSingleNode("/cfdi:Comprobante/@LugarExpedicion", VarManager).InnerText
+                row("LugarExpedicion") = _LugarExpedicion
+
+                _FolioReferencia = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("FolioReferencia") = _FolioReferencia
+
+                _Codigo = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("Codigo") = _Codigo
+
+                _DocPago = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("DocPago") = _DocPago
+
+                _IvaImporte = DocumentoXML.SelectSingleNode("", VarManager).InnerText
+                row("IvaImporte") = _IvaImporte
+
+                '-----------------------------------------------------------------------------------------------------------------------------------'
+                _cfdiClaveProdServ = lconcepto.Attribute("ClaveProdServ").Value
+                row("cfdiClaveProdServ") = _cfdiClaveProdServ
+
+                _Cantidad = lconcepto.Attribute("Cantidad")
+                row("Cantidad") = _Cantidad
+
+                _cfdiClaveUnidad = lconcepto.Attribute("ClaveUnidad")
+                row("cfdiClaveUnidad") = _cfdiClaveUnidad
+
+                _Concepto = lconcepto.Attribute("Descripcion").Value
+                row("Concepto") = _Concepto
+
+                _PUnitario = lconcepto.Attribute("ValorUnitario").Value
+                row("PUnitario") = _PUnitario
+
+                _Importe = lconcepto.Attribute("Importe")
+                row("Importe") = _Importe
+                ax = Double.Parse(_Importe)
+
+                importe = importe + 1
+
+                If lconcepto.HasAttributes = True Then
+
+                    For Each lImpuestos As XElement In archivoXML.Descendants(nsCFDi + "Comprobante").Elements(nsCFDi + "Conceptos").Elements(nsCFDi + "Concepto").Elements(nsCFDi + "Impuestos").Elements(nsCFDi + "Traslados").Elements(nsCFDi + "Traslado")
+
+                        _cfdiBase = lImpuestos.Attribute("Base").Value
+
+                        x2 = Double.Parse(_cfdiBase)
+
+                        If ax = x2 Then
+
+                            _cfdiBase = lImpuestos.Attribute("Base").Value
+                            row("cfdiBase") = _cfdiBase
+
+                            _cfdiImpuesto = lImpuestos.Attribute("Impuesto").Value
+                            row("cfdiImpuesto") = _cfdiImpuesto
+
+                            _cfdiTipoFactor = lImpuestos.Attribute("TipoFactor").Value
+                            row("cfdiTipoFactor") = _cfdiTipoFactor
+
+                            _cfdiTasaOCuota = lImpuestos.Attribute("TasaOCuota").Value
+                            row("cfdiTasaOCuota") = _cfdiTasaOCuota
+
+                            _cfdiImporte = lImpuestos.Attribute("Importe").Value
+                            row("cfdiImporte") = _cfdiImporte
+
+                        End If
+                    Next
+                    table.Rows.Add(row)
+                End If
+                table.Rows.Add(row)
+            Next
+            lb1.Text = (importe & "  conceptos ")
+        Else
+            MsgBox("Archivo XML no es una factura version 3.3")
+        End If
+
+        dgv1.DataSource = table
+
+    End Sub
